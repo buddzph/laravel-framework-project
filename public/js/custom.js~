@@ -201,7 +201,7 @@ jQuery(function($) {
     	var url = 'verification';
 		$.post( url, { cellnum: cell, serviceid: serviceid, servicename: servicename, type: type })
 			.done(function( data ) {
-					//console.log(data);
+					console.log(data);
 			
                     if(data == 'globe'){
 

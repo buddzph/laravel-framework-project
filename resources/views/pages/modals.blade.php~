@@ -356,13 +356,13 @@
                   <div id="notification" style="display: none;"></div>
                   
                   
-                  <!--Step One: Number Input-->
+                  <!--Step One: Verification-->
                   <div class="input-group verification-form-step-one">
                     <input type="text" name="cellnum" id="cellnum" maxlength="11" class="numberonly form-control input-verify-cellnum" placeholder="11-digit cellphone # (09xxxxxxxxx)">
                     <span class="input-group-btn"><button type="button" onclick="verifycellnum()" class="btn btn-primary subscription-verification-cellnum-submit-button">Verify!</button></span>
                   </div>
                   
-                  <!--Step Two: Input Verification Code-->
+                  <!--Step Two: -->
                   <div class="input-group verification-form-step-two">
                     <p>Verification code successfully sent! Kindly wait a while for our text.</p>
                     <br/>

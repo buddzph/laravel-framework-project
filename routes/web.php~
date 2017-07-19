@@ -31,8 +31,6 @@ Route::get('/landingpage4', 'HomeController@landingpage4');
 
 Route::get('/landingpage5', 'HomeController@landingpage5');
 
-Route::get('/landingpage6', 'HomeController@landingpage6');
-
 Route::post('/verification', 'HomeController@verification');
 
 Route::post('/confirmverification', 'HomeController@confirmverification');
