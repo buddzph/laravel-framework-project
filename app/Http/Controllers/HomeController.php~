@@ -156,6 +156,24 @@ class HomeController extends Controller
 				
 				return 'smart';
 		  	  }
+		  	  else if($serviceid == 44 && $servicetype == 'service'){
+		  	  	$keyword = 'NDEND'; // featured rbt name
+				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+				
+				return 'smart';
+		  	  }
+		  	  else if($serviceid == 45 && $servicetype == 'service'){
+		  	  	$keyword = 'SHPEOFU5'; // featured rbt name
+				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+				
+				return 'smart';
+		  	  }
+		  	  else if($serviceid == 46 && $servicetype == 'service'){
+		  	  	$keyword = 'NGMES5'; // featured rbt name
+				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+				
+				return 'smart';
+		  	  }
 		  	  else{
 		  	  	return 'failed';
 		  	  }
@@ -214,6 +232,15 @@ class HomeController extends Controller
 			}
 			else if($serviceid == 43){
 				$msg = 'NW116';
+			}
+			else if($serviceid == 44){
+				$msg = 'NL176';
+			}
+			else if($serviceid == 45){
+				$msg = 'NW728';
+			}
+			else if($serviceid == 46){
+				$msg = 'NX047';
 			}
 			else{
 				$msg = 'ON ' . $servicename;
@@ -347,5 +374,28 @@ class HomeController extends Controller
     public function landingpage6(){
       return view('pages.landingpage6');
     }
-    
+    public function landingpage7(){
+      return view('pages.landingpage7');
+    }
+    public function landingpage8(){
+      return view('pages.landingpage8');
+    }
+    public function landingpage9(){
+      return view('pages.landingpage9');
+    }
+    public function landingpage10(){
+      return view('pages.landingpage10');
+    }
+    public function landingpage11(){
+      return view('pages.landingpage11');
+    }
+    public function landingpage12(){
+      return view('pages.landingpage12');
+    }
+	public function landingpage13(){
+      return view('pages.landingpage13');
+    }
+    public function landingpage14(){
+      return view('pages.landingpage14');
+    }
 }

@@ -100,12 +100,78 @@ if(isset($_GET['subscription']) and !empty($_GET['subscription'])):
             })
             
           </script>
+          
+<?php
+	break;
+	case 'intheend':
+?>
 
-          <?php
-          break;
-      default:
-          //code to be executed if n is different from all labels;
-  }
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('44', 'In The End', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+      
+<?php
+	break;
+	case 'shapeofyou':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('45', 'Shape Of You', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+
+<?php
+	break;
+	case 'nogames':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('46', 'No Games', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+
+
+<?php
+	break;
+	default:
+	//code to be executed if n is different from all labels;
+	}
 endif;
 
 ?>
