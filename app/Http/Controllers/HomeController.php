@@ -52,15 +52,52 @@ class HomeController extends Controller
                         ])
                     ->get()->toArray();*/
 
-        $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
-                    ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
-                    ->where([
-                            'data_bind.table_name' => 'rbt_aliases',
-                            'data_bind.status' => '1'
-                        ])
-                    ->get()->toArray();
+        if(isset($this->request->get('artist')) && $this->request->get('artist') == 'jennylynmercado'):
 
-                    // dd($dataalias);
+          $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
+                      ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
+                      ->where([
+                              'data_bind.table_name' => 'rbt_aliases',
+                              'data_bind.status' => '1'
+                          ])
+                      ->whereIn('rbt_keys.keyword', ['NX977', 'NX983', 'NX989', 'NX995', 'NY008', 'NX917'])
+                      ->get()->toArray();
+
+        elseif(isset($this->request->get('artist')) && $this->request->get('artist') == 'myrtlesarrosa'):
+
+          $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
+                      ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
+                      ->where([
+                              'data_bind.table_name' => 'rbt_aliases',
+                              'data_bind.status' => '1'
+                          ])
+                      ->whereIn('rbt_keys.keyword', ['NY055', 'NY061', 'NY073', 'NY079', 'NY085', 'NY091', 'NY097', 'NY103', 'NY109', 'NY067'])
+                      ->get()->toArray();
+
+        elseif(isset($this->request->get('artist')) && $this->request->get('artist') == 'silentsanctuary'):
+
+          $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
+                      ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
+                      ->where([
+                              'data_bind.table_name' => 'rbt_aliases',
+                              'data_bind.status' => '1'
+                          ])
+                      ->whereIn('rbt_keys.keyword', ['NY115', 'NY121', 'NY127', 'NY133', 'NY139', 'NY145', 'NY151', 'NY157', 'NY163', 'NY169', 'NY175', 'NY181', 'NY187', 'NY199', 'NY193'])
+                      ->get()->toArray();
+
+        else:
+
+          $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
+                      ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
+                      ->where([
+                              'data_bind.table_name' => 'rbt_aliases',
+                              'data_bind.status' => '1'
+                          ])
+                      ->whereNotIn('rbt_keys.keyword', ['NX977', 'NX983', 'NX989', 'NX995', 'NY008', 'NX917', 'NY055', 'NY061', 'NY073', 'NY079', 'NY085', 'NY091', 'NY097', 'NY103', 'NY109', 'NY067', 'NY115', 'NY121', 'NY127', 'NY133', 'NY139', 'NY145', 'NY151', 'NY157', 'NY163', 'NY169', 'NY175', 'NY181', 'NY187', 'NY199', 'NY193'])
+                      ->get()->toArray();
+
+                      // dd($dataalias);
+        endif;
 
       return $dataalias;
     }
