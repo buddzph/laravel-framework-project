@@ -61,6 +61,10 @@ class HomeController extends Controller
         elseif(isset($artist) && $artist == 'silentsanctuary'):
 
           $artistRBTarray = array('NY115', 'NY121', 'NY127', 'NY133', 'NY139', 'NY145', 'NY151', 'NY157', 'NY163', 'NY169', 'NY175', 'NY181', 'NY187', 'NY199', 'NY193');
+        
+        elseif(isset($artist) && $artist == 'dello'):
+            
+          $artistRBTarray = array('NE919', 'NG750', 'NI047', 'NI187', 'NL882', 'NL992');
 
         endif;
 
