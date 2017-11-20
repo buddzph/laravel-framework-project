@@ -19,7 +19,11 @@ class HomeController extends Controller
 
     }
 
-    public function index(){
+    public function index($artist = null){
+
+      if($artist) {
+          $data['artist'] = $artist;
+      }
 
       /*$data['services'] = Service::select('id', 'name')
                      ->where('active', 1)->get();*/
@@ -35,32 +39,59 @@ class HomeController extends Controller
 
                 // for testing $data
                 // dd($data);
-      $data['alias'] = $this->rbtalias();
+      $data['alias'] = $this->rbtalias($artist);
       
       //dd($data);               
 
       return view('pages.home', $data);
     }
 
-    public function rbtalias(){
-      /*$dataalias = DataBind::select('rbt_aliases.id', 'rbt_aliases.rbt_key_id', 'rbt_aliases.alias', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
-                    ->leftJoin('rbt_aliases', 'data_bind.id_ref', '=', 'rbt_aliases.id')
-                    ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'rbt_aliases.rbt_key_id')
-                    ->where([
-                            'data_bind.table_name' => 'rbt_aliases',
-                            'data_bind.status' => '1'
-                        ])
-                    ->get()->toArray();*/
+    public function rbtalias($artist = null){
 
-        $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
-                    ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
-                    ->where([
-                            'data_bind.table_name' => 'rbt_aliases',
-                            'data_bind.status' => '1'
-                        ])
-                    ->get()->toArray();
+        $artistRBTarray = array('NX977', 'NX983', 'NX989', 'NX995', 'NY008', 'NX917', 'NY055', 'NY061', 'NY073', 'NY079', 'NY085', 'NY091', 'NY097', 'NY103', 'NY109', 'NY067', 'NY115', 'NY121', 'NY127', 'NY133', 'NY139', 'NY145', 'NY151', 'NY157', 'NY163', 'NY169', 'NY175', 'NY181', 'NY187', 'NY199', 'NY193');
 
-                    // dd($dataalias);
+        if(isset($artist) && $artist == 'jennylynmercado'):
+
+          $artistRBTarray = array('NX977', 'NX983', 'NX989', 'NX995', 'NY008', 'NX917');
+
+        elseif(isset($artist) && $artist == 'myrtlesarrosa'):
+
+          $artistRBTarray = array('NY055', 'NY061', 'NY073', 'NY079', 'NY085', 'NY091', 'NY097', 'NY103', 'NY109', 'NY067');
+
+        elseif(isset($artist) && $artist == 'silentsanctuary'):
+
+          $artistRBTarray = array('NY115', 'NY121', 'NY127', 'NY133', 'NY139', 'NY145', 'NY151', 'NY157', 'NY163', 'NY169', 'NY175', 'NY181', 'NY187', 'NY199', 'NY193');
+
+        endif;
+
+        // echo $impartistArray = implode(', ', $artistRBTarray);
+
+        // echo $impartistArray;
+
+        if(isset($artist)):
+
+          $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
+                      ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
+                      ->where([
+                              'data_bind.table_name' => 'rbt_aliases',
+                              'data_bind.status' => '1'
+                          ])
+                      ->whereIn('rbt_keys.keyword', $artistRBTarray)
+                      ->get()->toArray();
+
+        else:
+
+          $dataalias = DataBind::select('rbt_keys.id', 'rbt_keys.id', 'rbt_keys.keyword', 'rbt_keys.artist', 'rbt_keys.title', 'rbt_keys.tariff', 'rbt_keys.expiry', 'data_bind.content', 'data_bind.bg_image', 'data_bind.type')
+                      ->leftJoin('rbt_keys', 'rbt_keys.id', '=', 'data_bind.id_ref')
+                      ->where([
+                              'data_bind.table_name' => 'rbt_aliases',
+                              'data_bind.status' => '1'
+                          ])
+                      ->whereNotIn('rbt_keys.keyword', $artistRBTarray)
+                      ->get()->toArray();
+
+                      // dd($dataalias);
+        endif;
 
       return $dataalias;
     }
@@ -143,47 +174,154 @@ class HomeController extends Controller
       else if($this->isSmart($cellnum)){
       	if(strlen($cellnum) == 11){// service id of featured rbt
 		  		
-			  if($serviceid == 42 && $servicetype == 'service'){
-			  		
-				$keyword = 'NKKMIS'; // featured rbt name
-				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
-				
-		  		return 'smart';
-		  	  }
-		  	  else if($serviceid == 43 && $servicetype == 'service'){
-		  	  	$keyword = 'DHLSYO5'; // featured rbt name
-				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
-				
-				return 'smart';
-		  	  }
-		  	  else if($serviceid == 44 && $servicetype == 'service'){
-		  	  	$keyword = 'NDEND'; // featured rbt name
-				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
-				
-				return 'smart';
-		  	  }
-		  	  else if($serviceid == 45 && $servicetype == 'service'){
-		  	  	$keyword = 'SHPEOFU5'; // featured rbt name
-				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
-				
-				return 'smart';
-		  	  }
-		  	  else if($serviceid == 46 && $servicetype == 'service'){
-		  	  	$keyword = 'NGMES5'; // featured rbt name
-				$res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
-				
-				return 'smart';
-		  	  }
-		  	  else{
-		  	  	return 'failed';
-		  	  }
-      	  
-      	  
-      	  
-      	  
+            if($serviceid == 42 && $servicetype == 'service'){
+
+              $keyword = 'NKKMIS'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 43 && $servicetype == 'service'){
+
+              $keyword = 'DHLSYO5'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 44 && $servicetype == 'service'){
+
+              $keyword = 'NDEND'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 45 && $servicetype == 'service'){
+
+              $keyword = 'SHPEOFU5'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 46 && $servicetype == 'service'){
+
+              $keyword = 'NGMES5'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 47 && $servicetype == 'service'){
+
+              $keyword = 'PAGSPF5'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 48 && $servicetype == 'service'){
+
+              $keyword = 'KDNTF'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 49 && $servicetype == 'service'){
+
+              $keyword = 'HINAYANG'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 50 && $servicetype == 'service'){
+
+              $keyword = 'MKSCF'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 51 && $servicetype == 'service'){
+
+              $keyword = 'EDPERFECT'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 52 && $servicetype == 'service'){
+
+              $keyword = 'HILNG'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 53 && $servicetype == 'service'){
+
+              $keyword = 'HPSK'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else{
+
+              $arrkeys = array(
+                  18031 => 'HAGDANJM',
+                  18046 => 'HULINGPAALAMJM',
+                  18062 => 'LAMPARAJM',
+                  18074 => 'MAGKAIBAJM',
+                  18134 => 'SUDDENLYJM',
+                  18014 => 'BULALAKAWJM',
+                  18038 => 'HBMYRTLE',
+                  18050 => 'ILUVMYRTLE',
+                  18751 => 'MRPAKIPOTMS',
+                  18755 => 'NASAANMS',
+                  18759 => 'NGAYONMS',
+                  18771 => 'PAKIPOTMS',
+                  18782 => 'SABINILAMS',
+                  18798 => 'SLVMYRTLE',
+                  18802 => 'TADHANAMYRTLE',
+                  18727 => 'LABELMYRTLE',
+                  18719 => 'ABOTLANGITSS',
+                  18718 => 'BAKASAKALI',
+                  18725 => 'BALANGARAWSS',
+                  18722 => 'BUMALIKSS',
+                  18707 => 'DNKMSS',
+                  18710 => 'HNALSS',
+                  18731 => 'LAMBINGSS',
+                  18739 => 'MASANAYSS',
+                  18743 => 'MAWALAKASS',
+                  18747 => 'MNISILENT',
+                  18776 => 'PASENSYAKN',
+                  18777 => 'SPMSS',
+                  18769 => 'SAMASAMASS',
+                  18790 => 'SAYOS',
+                  18794 => 'SAYOSSOV'
+              );
+
+              // echo '<pre>'; print_r($arrkeys); echo '</pre>';
+
+              $keyfound = 0;
+              foreach ($arrkeys as $key => $value) {
+                if($key == $serviceid): 
+                  $keyfound++;
+                  $keyword = $value;
+                endif;
+              }
+
+              if($keyfound > 0):
+
+                $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+                return 'smart';
+
+              else:
+
+                return 'failed';
+
+              endif;
+              
+            } 
       		
       	}else{
-       	 return 'failed';
+       	 
+           return 'failed';
+
       	}
       
       
@@ -241,6 +379,27 @@ class HomeController extends Controller
 			}
 			else if($serviceid == 46){
 				$msg = 'NX047';
+			}
+			else if($serviceid == 47){
+				$msg = 'NK415';
+			}
+			else if($serviceid == 48){
+				$msg = 'NO195';
+			}
+			else if($serviceid == 49){
+				$msg = 'NZ149';
+			}
+			else if($serviceid == 50){
+				$msg = 'NO197';
+			}
+			else if($serviceid == 51){
+				$msg = 'NY704';
+			}
+			else if($serviceid == 52){
+				$msg = 'NT184';
+			}
+			else if($serviceid == 53){
+				$msg = 'NY767';
 			}
 			else{
 				$msg = 'ON ' . $servicename;
@@ -397,5 +556,32 @@ class HomeController extends Controller
     }
     public function landingpage14(){
       return view('pages.landingpage14');
+    }
+    public function landingpage15(){
+      return view('pages.landingpage15');
+    }
+    public function landingpage16(){
+      return view('pages.landingpage16');
+    }
+    public function landingpage17(){
+      return view('pages.landingpage17');
+    }
+    public function landingpage18(){
+      return view('pages.landingpage18');
+    }
+    public function landingpage19(){
+      return view('pages.landingpage19');
+    }
+    public function landingpage20(){
+      return view('pages.landingpage20');
+    }
+    public function landingpage21(){
+      return view('pages.landingpage21');
+    }
+    public function landingpage22(){
+      return view('pages.landingpage22');
+    }
+    public function landingpage23(){
+      return view('pages.landingpage23');
     }
 }

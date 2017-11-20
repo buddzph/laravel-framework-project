@@ -165,6 +165,184 @@ if(isset($_GET['subscription']) and !empty($_GET['subscription'])):
         })
         
       </script>
+      
+      
+<?php
+	break;
+	case 'pasipsipnaman':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('47', 'Pasipsip Naman', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+      
+<?php
+	break;
+	case 'kahitdinatayo':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('48', 'Kahit Di Na Tayo', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+        
+<?php
+	break;
+	case 'nanghihinayang':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('49', 'Nanghihinayang', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+      
+<?php
+	break;
+	case 'masayaakosayo':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('50', 'Masaya Ako Sayo', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+      
+<?php
+	break;
+	case 'perfect':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('51', 'Perfect', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+      
+      
+<?php
+	break;
+	case 'hiling':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('52', 'Hiling', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+
+
+<?php
+	break;
+	case 'hindiparasayo':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('53', 'Hindi Para Sayo', 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
+      
+      
+      
+<?php
+	break;
+	case 'dontknowwhattodo':
+?>
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+          var executefunction = submitservice('54', "Don't Know What To Do", 'service');
+
+          $('#subscription-verification-modal').modal({
+             show: true,
+             open: function() {
+                // some functions here
+             }
+          });
+
+        })
+        
+      </script>
 
 
 <?php
