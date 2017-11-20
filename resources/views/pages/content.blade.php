@@ -12,7 +12,7 @@
 
 
           <?php
-          $artistarray = array('jennylynmercado', 'myrtlesarrosa', 'silentsanctuary');
+          $artistarray = array('jennylynmercado', 'myrtlesarrosa', 'silentsanctuary', 'dello');
 
           if(isset($artist) and in_array($artist, $artistarray)):
 
@@ -61,6 +61,10 @@
           elseif(isset($artist) and $artist == 'silentsanctuary'):
             
             $rbtbg = 'background-image: url(img/Silent_Sancstuary_MUSICHQ-min.png);';
+          
+          elseif(isset($artist) and $artist == 'dello'):
+              
+              $rbtbg = 'background-image: url(img/DelloMusicHQ.jpg);';
 
           endif;
           ?>
