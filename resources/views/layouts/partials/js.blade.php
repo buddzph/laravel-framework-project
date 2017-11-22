@@ -33,6 +33,7 @@
     $('.verification-form-step-two').fadeOut();
     $('#notification').hide();
     //alert(servicename);
+
   }
 
   function verifycellnum(){

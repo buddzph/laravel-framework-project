@@ -36,7 +36,7 @@
                $servicecontentdataslice2scale = $expcontent[7];
                ?>
 
-                <div class="sl-slide bg-1 <?php echo $servicecontentcss; ?>" data-orientation="<?php echo $servicecontentdataorientation; ?>" data-slice1-rotation="<?php echo $servicecontentdataslice1rotation; ?>" data-slice2-rotation="<?php echo $servicecontentdataslice2rotation; ?>" data-slice1-scale="<?php echo $servicecontentdataslice1scale; ?>" data-slice2-scale="<?php echo $servicecontentdataslice2scale; ?>">
+                <div id="slideid-<?php echo $serviceid; ?>" class="sl-slide bg-1 <?php echo $servicecontentcss; ?>" data-orientation="<?php echo $servicecontentdataorientation; ?>" data-slice1-rotation="<?php echo $servicecontentdataslice1rotation; ?>" data-slice2-rotation="<?php echo $servicecontentdataslice2rotation; ?>" data-slice1-scale="<?php echo $servicecontentdataslice1scale; ?>" data-slice2-scale="<?php echo $servicecontentdataslice2scale; ?>">
                   <div class="sl-slide-inner" style="background-image: url(<?php echo $bg_image; ?>);">
                     <h2><?php echo $servicename; ?></h2>
                     <blockquote><p><?php echo $servicecontenttext; ?></p><cite><a href="javascript void(0);" onclick="submitservice('<?php echo $serviceid ?>', '<?php echo $servicename ?>', '<?php echo $type ?>')" class="btn btn-default subscription-button" data-toggle="modal" data-target="#subscription-verification-modal"><?php echo $servicecontentbutton; ?></a></cite></blockquote><br/>

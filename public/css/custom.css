@@ -661,4 +661,6 @@ body.modal-open .modal .modal-dialog {
 
 .msq-nav .navbar  .navbar-inverse .navbar-nav > li > a{ font-weight: bold !important; }
 
+.displaythis {display: block !important;}
+
 /*testing only*/

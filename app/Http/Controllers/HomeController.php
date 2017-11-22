@@ -269,6 +269,48 @@ class HomeController extends Controller
 
               return 'smart';
 
+            }else if($serviceid == 55 && $servicetype == 'service'){
+              
+              $keyword = 'AARAW'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 56 && $servicetype == 'service'){
+              
+              $keyword = 'HARING'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 57 && $servicetype == 'service'){
+              
+              $keyword = 'MINSAND'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 58 && $servicetype == 'service'){
+              
+              $keyword = 'NKKMIS'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 59 && $servicetype == 'service'){
+              
+              $keyword = 'SNDLA'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
+            }else if($serviceid == 60 && $servicetype == 'service'){
+              
+              $keyword = 'DAT2'; // featured rbt name
+              $res = $this->curl_to_smart($cellnum,$keyword,$serviceid);
+
+              return 'smart';
+
             }else{
 
               $arrkeys = array(
@@ -421,6 +463,24 @@ class HomeController extends Controller
 			else if($serviceid == 54){
 				$msg = 'NZ929';
 			}
+      else if($serviceid == 55){
+        $msg = 'NI047';
+      }
+      else if($serviceid == 56){
+        $msg = 'NL882';
+      }
+      else if($serviceid == 57){
+        $msg = 'NI187';
+      }
+      else if($serviceid == 58){
+        $msg = 'NL992';
+      }
+      else if($serviceid == 59){
+        $msg = 'NE919';
+      }
+      else if($serviceid == 60){
+        $msg = 'NG750';
+      }
 			else{
 				$msg = 'ON ' . $servicename;
 			}
